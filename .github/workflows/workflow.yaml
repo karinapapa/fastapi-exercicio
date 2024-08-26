@@ -13,7 +13,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-     steps:
+    steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
@@ -29,10 +29,8 @@ jobs:
       - name: Push Docker Image
         run: docker push karinapapa/fastzero:latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag latest:$(date +%s)
+    
+    
 
       
 
