@@ -47,19 +47,16 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
   
-  build:
+  trivy:
     name: Build Trivy
     
- 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
  
       - name: Build an image from Dockerfile
-        run: |
-          docker build -t docker.io/karinapapa/fastzero:${{ github.sha }} ./
+        run: docker build -t docker.io/karinapapa/fastzero:${{ github.sha }} ./
  
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
