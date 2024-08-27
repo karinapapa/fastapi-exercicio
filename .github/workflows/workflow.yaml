@@ -50,6 +50,7 @@ jobs:
   
   trivy:
     name: Build Trivy
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
