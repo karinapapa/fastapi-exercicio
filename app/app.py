@@ -6,5 +6,5 @@ app = FastAPI()
 
 def read_root():
     return {
-        "message": "Olá Mundo!"
+        "message": "Olá Mundo! Esse é um teste de Karina Papa"
     }
