@@ -59,12 +59,12 @@ jobs:
  
       - name: Build an image from Dockerfile
         run: |
-          docker build -t docker.io/karinapapa/fastapi:${{ github.sha }} ./
+          docker build -t docker.io/karinapapa/fastzero:${{ github.sha }} ./
  
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: 'docker.io/karinapapa/fastapi:${{ github.sha }}'
+          image-ref: 'docker.io/karinapapa/fastzero:${{ github.sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
  
