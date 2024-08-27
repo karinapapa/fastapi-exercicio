@@ -50,12 +50,13 @@ jobs:
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
-          
-      - name: Install SonarQube Scanner
+
+        - name: Install SonarQube Scanner
         run: |
         wget -q -O sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
         unzip sonar-scanner.zip
-        export PATH="$PATH:$(pwd)/sonar-scanner-4.8.0.2856-linux/bin"      
+        mv sonar-scanner-4.8.0.2856-linux sonar-scanner
+        echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH    
 
       - name: SonarQube Scan
         run: |
