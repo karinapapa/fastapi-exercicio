@@ -47,7 +47,31 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      
+
+  
+  build:
+    name: Build Trivy
+    
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+ 
+      - name: Build an image from Dockerfile
+        run: |
+          docker build -t docker.io/karinapapa/fastapi:${{ github.sha }} ./
+ 
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: 'docker.io/karinapapa/fastapi:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+ 
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'    
 
 
 
