@@ -75,10 +75,14 @@ jobs:
           repository: karinapapa/helm-repositorio 
           token: ${{ secrets.ACCESS_TOKEN_OPS }}
           path: api  
+      - name: Verificar diretórios
+        run: |
+          ls -R api
+
 
       - name: Atualizar tag 
         run: |
-          cd api/api
+          cd api
           pwd
           ls -a 
           sed -i 's|image:.*|image: '${{ steps.meta.outputs.tags }}'|' values.yaml
