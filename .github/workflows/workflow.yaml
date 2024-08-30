@@ -75,6 +75,7 @@ jobs:
           repository: karinapapa/helm-repositorio 
           token: ${{ secrets.ACCESS_TOKEN_OPS }}
           path: api  
+
       - name: Verificar diretórios
         run: |
           ls -R api
@@ -82,7 +83,7 @@ jobs:
 
       - name: Atualizar tag 
         run: |
-          cd api
+          cd api/config
           pwd
           ls -a 
           sed -i 's|image:.*|image: '${{ steps.meta.outputs.tags }}'|' values.yaml
@@ -91,7 +92,7 @@ jobs:
 
       - name: Commit e Push
         run: |
-          cd api/api
+          cd api/config
           pwd
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
