@@ -68,7 +68,7 @@ jobs:
           output: 'trivy-results.sarif'
           
 
-    steps:
+    
       - name: Clonar_repo
         uses: actions/checkout@v3
         with:
