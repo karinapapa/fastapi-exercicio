@@ -82,8 +82,8 @@ jobs:
           pwd
           ls -a 
           sed -i 's|image:.*|image: '${{ steps.meta.outputs.tags }}'|' values.yaml
-          env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_OPS }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_OPS }}
 
       - name: Commit e Push
         run: |
@@ -95,7 +95,7 @@ jobs:
           git commit -m "Update docker tag para:  ${{ steps.meta.outputs.tags }}"
           git push
         env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_OPS }}    
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_OPS }}    
 
 
 
