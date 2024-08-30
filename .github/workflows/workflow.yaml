@@ -81,7 +81,7 @@ jobs:
           cd api/api
           pwd
           ls -a 
-        sed -i 's|image:.*|image: '${{ steps.meta.outputs.tags }}'|' values.yaml
+          sed -i 's|image:.*|image: '${{ steps.meta.outputs.tags }}'|' values.yaml
           env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_OPS }}
 
