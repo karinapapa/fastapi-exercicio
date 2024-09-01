@@ -67,8 +67,8 @@ jobs:
           format: 'sarif'
           output: 'trivy-results.sarif'
         
-  helm chart:
-    name: Helm Chart
+  helm-chart:
+    name: Helm-Chart
     runs-on: ubuntu-latest  
     
 
