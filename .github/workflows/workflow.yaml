@@ -66,9 +66,13 @@ jobs:
           image-ref: karinapapa/fastzero
           format: 'sarif'
           output: 'trivy-results.sarif'
-          
-
+        
+  helm chart:
+    name: Helm Chart
+    runs-on: ubuntu-latest  
     
+
+    steps:
       - name: Clonar_repo
         uses: actions/checkout@v3
         with:
@@ -83,7 +87,7 @@ jobs:
 
       - name: Atualizar tag 
         run: |
-          cd api/config
+          cd api/fastapi
           pwd
           ls -a 
           sed -i 's|image:.*|image: '${{ steps.meta.outputs.tags }}'|' values.yaml
@@ -92,7 +96,7 @@ jobs:
 
       - name: Commit e Push
         run: |
-          cd api/config
+          cd api/fastapi
           pwd
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
