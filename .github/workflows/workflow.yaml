@@ -87,7 +87,7 @@ jobs:
 
       - name: Atualizar tag 
         run: |
-          cd api/fastapi
+          cd .api/fastapi
           pwd
           ls -a 
           sed -i 's|image:.*|image: '${{ steps.meta.outputs.tags }}'|' values.yaml
